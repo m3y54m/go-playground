@@ -1,2 +1,3 @@
-# start-golang
-Getting started with Go programming language
+# Getting started with Go
+
+[Go by Example](https://gobyexample.com/)
