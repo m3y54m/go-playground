@@ -1,6 +1,7 @@
 # Getting started with Go
 
 [Go by Example](https://gobyexample.com/)
+
 [An Introduction to Programming in Go](https://www.golang-book.com/books/intro)
 
 ## Install Go Compiler (in Ubuntu)
