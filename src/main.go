@@ -26,4 +26,22 @@ func main() {
 
 	fmt.Println(s1)
 
+	// Define some numeric variables:
+	var i1 int = 10
+	var i2 = 20
+	i3 := 3.14
+
+	fmt.Println(i1)
+	fmt.Println(i2)
+	fmt.Println(i3 * float64(i2))
+
+	// Define some boolean variables:
+	var b1 bool = true
+	var b2 = false
+	b3 := b1 || b2
+
+	fmt.Println(b1)
+	fmt.Println(!b2)
+	fmt.Println(b3)
+
 }
