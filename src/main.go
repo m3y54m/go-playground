@@ -83,4 +83,39 @@ func main() {
 		fmt.Println(j)
 		j += 6
 	}
+
+	// If/else statements:
+	if num := 9; num < 0 {
+		fmt.Println("Negative")
+	} else if num < 10 {
+		fmt.Println("Has 1 digit")
+	} else {
+		fmt.Println("Has multiple digits")
+	}
+
+	// Switch statements:
+	i := 2
+	switch i {
+	case 1:
+		fmt.Println("One")
+	case 2:
+		fmt.Println("Two")
+	default:
+		fmt.Println("None")
+	}
+
+	// switch without an expression is an alternate
+	// way to express if/else logic
+	t := 12
+	switch {
+	case t < 10:
+		fmt.Println("Less than 10")
+	default:
+		fmt.Println("Greater than 10")
+	}
+
+	// A type switch compares types instead of values.
+	// You can use this to discover the type of
+	// an "interface" value.
+
 }
