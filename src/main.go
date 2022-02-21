@@ -267,4 +267,100 @@ func main() {
 		fmt.Println(index, value, string(value))
 	}
 
+	// Functions:
+	fmt.Println("\n* FUNCTIONS *")
+
+	// Function without return values:
+	TestFunc()
+
+	MyPrint(hello)
+
+	// Functions with return values:
+	fmt.Println(plus(1, 2))
+
+	// Variadic Function:
+	fmt.Println(MySum(1, 2, 3))
+	fmt.Println(MySum(1, 2, 3, 4, 5))
+	// Pass a slice as an argument:
+	nums := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+	fmt.Println(MySum(nums...))
+
+	// Functions with named return values:
+	p, t := MySum2(1, 2, 3, 4, 5)
+	fmt.Println(p, t)
+
+	// Closures (anonymous functions):
+	// A closure is a function value that references
+	// variables from outside its body.
+	// Anonymous functions are useful when you want to
+	// define a function inline without having to name it.
+	fmt.Println("\n* CLOSURES *")
+
+	// Anonymous function:
+	f := func(x int) int {
+		return x * x
+	}
+	fmt.Println(f(3))
+
+	// Closure with local static variable i
+	nextInt := intSeq()
+	fmt.Println(nextInt())
+	fmt.Println(nextInt())
+	fmt.Println(nextInt())
+
+	nextInt2 := intSeq()
+	fmt.Println(nextInt2())
+
+	f2 := func() func() int {
+		i := 0
+		return func() int {
+			i++
+			return i
+		}
+	}
+	fmt.Println(f2()())
+	fmt.Println(f2()())
+
+	t2 := f2()
+	fmt.Println(t2())
+	fmt.Println(t2())
+
+}
+
+// Define some functions:
+func TestFunc() {
+	fmt.Println("x =", x)
+}
+
+func MyPrint(s string) {
+	fmt.Println(s)
+}
+
+func plus(a int, b int) int {
+	return a + b
+}
+
+func MySum(nums ...int) int {
+	sum := 0
+	for _, num := range nums {
+		sum += num
+	}
+	return sum
+}
+
+func MySum2(nums ...int) (int, int) {
+	sum := 0
+	for _, num := range nums {
+		sum += num
+	}
+	return sum, sum * 2
+}
+
+// Closures:
+func intSeq() func() int {
+	i := 0
+	return func() int {
+		i++
+		return i
+	}
 }
