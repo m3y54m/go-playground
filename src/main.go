@@ -325,6 +325,47 @@ func main() {
 	fmt.Println(t2())
 	fmt.Println(t2())
 
+	// Recursion:
+	fmt.Println("\n* RECURSION *")
+
+	fmt.Println(factorial(3))
+
+	// Recursion with a closure:
+	var fibonacci func(n int) int
+
+	fibonacci = func(n int) int {
+		if n < 2 {
+			return n
+		}
+		return fibonacci(n-1) + fibonacci(n-2)
+	}
+
+	for i := 0; i < 10; i++ {
+		fmt.Println(fibonacci(i))
+	}
+
+	// Pointers:
+	fmt.Println("\n* POINTERS *")
+
+	// Declare a pointer:
+	x1 := 10
+	var p1 *int = &x1
+
+	fmt.Println("Address of x1:", p1)
+	fmt.Println("Value of x1:", x1)
+
+	*p1 = 20
+
+	fmt.Println("Address of x1:", p1)
+	fmt.Println("Value of x1:", x1)
+
+	f3 := func(x *int) {
+		*x++
+	}
+
+	f3(&x1)
+	fmt.Println("Value of x1:", x1)
+
 }
 
 // Define some functions:
@@ -363,4 +404,11 @@ func intSeq() func() int {
 		i++
 		return i
 	}
+}
+
+func factorial(n int) int {
+	if n == 0 {
+		return 1
+	}
+	return n * factorial(n-1)
 }
