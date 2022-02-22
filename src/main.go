@@ -366,6 +366,22 @@ func main() {
 	f3(&x1)
 	fmt.Println("Value of x1:", x1)
 
+	// Pointers with slices:
+	fmt.Println("\n* POINTERS WITH SLICES *")
+
+	// Declare a slice:
+	s5 := []int{1, 2, 3, 4, 5}
+	fmt.Println("Slice:", s1)
+
+	// Declare a pointer to a slice:
+	p2 := &s5
+
+	// Declare a pointer to a slice element:
+	p3 := &(*p2)[4]
+	fmt.Println("Address of p2:", p2)
+	fmt.Println("Address of p3:", p3)
+	fmt.Println("Value of p3:", *p3)
+
 }
 
 // Define some functions:
@@ -406,6 +422,7 @@ func intSeq() func() int {
 	}
 }
 
+// Recursive function:
 func factorial(n int) int {
 	if n == 0 {
 		return 1
