@@ -30,3 +30,7 @@ go build src/main.go
 - [A Tour of Go](https://go.dev/tour/list)
 - [Effective Go](https://go.dev/doc/effective_go)
 - [Go Programming Language](https://go.dev/doc/)
+- [A Brief Talk on Strings and Byte Arrays in Golang](https://developpaper.com/a-brief-talk-on-strings-and-byte-arrays-in-golang/)
+- [Rune in Golang](https://www.geeksforgeeks.org/rune-in-golang/)
+- [UTF-8 code page](https://www.charset.org/utf-8)
+- [Data Types in Go](https://www.geeksforgeeks.org/data-types-in-go/)

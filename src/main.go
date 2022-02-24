@@ -9,7 +9,11 @@ package main
  * The fmt package (shorthand for format) implements
  * formatting for input and output.
  */
-import "fmt"
+import (
+	"fmt"
+	"reflect"
+	"unicode/utf8"
+)
 
 // Global variables
 var x int = 20
@@ -381,6 +385,88 @@ func main() {
 	fmt.Println("Address of p2:", p2)
 	fmt.Println("Address of p3:", p3)
 	fmt.Println("Value of p3:", *p3)
+
+	// Strings and runes:
+	fmt.Println("\n* STRINGS AND RUNES *")
+
+	// Declare a string:
+	// In Go, a string is a "read-only" slice of bytes.
+	const s9 string = "hello سلام"
+
+	fmt.Println(s9)
+
+	// Length of a string (number of bytes):
+	fmt.Println(len(s9))
+
+	// Convert a string to a slice of bytes:
+	b9 := []byte(s9)
+	for index, value := range b9 {
+		fmt.Printf("%d %s %x\n", index, string(value), value)
+	}
+
+	// Convert a slice of bytes to a string:
+	s10 := string(b9)
+	fmt.Println(s10)
+
+	// Number of runes (Uincode characters)):
+	fmt.Println(len([]rune(s9)))
+
+	// in Go "rune" is an alias for int32 and
+	// represents a Unicode character
+	// Runes are UTF-8 encoded
+
+	// Range over runes of a string:
+	for index, runeValue := range s9 {
+		fmt.Printf("%#U starts at byte position %d\n", runeValue, index)
+	}
+
+	// Go stores the UTF-8 encoded byte sequences of string values in memory.
+	// The builtin function len() reports the byte-length of a string,
+	// so basically the memory required to store a string value in memory is:
+	// sizeOfString := len(s9) + int(unsafe.Sizeof(s9))
+	// WARNING: UNSAFE CODE!
+	sizeOfString := len(s9) + int(reflect.TypeOf(s9).Size())
+	fmt.Println("Memory allocated for storing string data type and value:", sizeOfString)
+	fmt.Println(reflect.TypeOf(s9))
+
+	// Strings are immutable:
+	// s9[0] = 'a' // ERROR: cannot assign to s9[0]
+
+	// Using utf8 package:
+	fmt.Println("\n* UTF-8 PACKAGE *")
+
+	fmt.Println(utf8.RuneCount(b9))
+	fmt.Println(utf8.RuneCountInString(s9))
+	fmt.Println([]rune(s9))
+
+	for index, value := range b9 {
+		fmt.Printf("%d %x\n", index, value)
+	}
+
+	for index, runeValue := range s9 {
+		fmt.Printf("%#U starts at byte position %d | %d\n", runeValue, index, reflect.TypeOf(runeValue).Size())
+	}
+
+	// Creating a rune (int32 for Unicode characters)
+	r1 := 'h'
+	r2 := 'س'
+	r3 := '🐫'
+	r4 := '\n'
+	fmt.Println(r1, string(r1))
+	fmt.Println(r2, string(r2))
+	fmt.Println(r3, string(r3))
+	fmt.Println(r4, string(r4))
+	fmt.Printf("%d %#x %#U\n", r3, r3, r3)
+	fmt.Println(reflect.TypeOf(r1).Size())
+
+	b4 := []byte(string(r3))
+	fmt.Printf("%x\n", b4)
+	for index, value := range b4 {
+		fmt.Printf("%d %X %d\n", index, value, value)
+	}
+
+	s6 := string(b4)
+	fmt.Println(s6)
 
 }
 
