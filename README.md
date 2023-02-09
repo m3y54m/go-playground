@@ -1,12 +1,23 @@
 # Getting started with Go
 
-[Go by Example](https://gobyexample.com/)
-
 
 ## Install Go Compiler (in Ubuntu)
 
 ```console
 sudo apt install golang
+```
+
+## Create new project
+
+```console
+mkdir go-playground
+cd go-playground
+```
+
+Initialize a new go module for the project:
+
+```console
+go mod init github.com/m3y54m/go-playground
 ```
 
 ## Run
@@ -34,3 +45,4 @@ go build src/main.go
 - [Rune in Golang](https://www.geeksforgeeks.org/rune-in-golang/)
 - [UTF-8 code page](https://www.charset.org/utf-8)
 - [Data Types in Go](https://www.geeksforgeeks.org/data-types-in-go/)
+- [Tips to Create a Proper Go Project Layout](https://www.developer.com/languages/go-project-layout/)
